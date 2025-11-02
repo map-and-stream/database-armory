@@ -1,21 +1,19 @@
 #pragma once
 
-#include <optional>
-#include <pqxx/pqxx>
 #include <string>
 #include <vector>
-
 #include "config.h"
 #include "query_result.h"
 #include "querybuilder/query_builder.h"
 #include "log/src/logger.h"
-
-enum class DatabaseType { PostgreSQL, sqlite };
+#include "connection/connection_pool.h" 
 
 class IDatabase {
-  public:
+public:
     virtual ~IDatabase() = default;
-    IDatabase(ConnectionConfig cfg, ILogger *logger) : config_(cfg), logger_(logger) {}
+
+    IDatabase(ConnectionConfig cfg, ILogger* logger)
+        : config_(cfg), logger_(logger), pool_(nullptr) {}
 
     virtual bool open() = 0;
     virtual void close() = 0;
@@ -26,7 +24,12 @@ class IDatabase {
     virtual bool remove(const QueryBuilder& qb) = 0;
     virtual QueryResult select(const QueryBuilder& qb) = 0;
 
-  protected:
+    // fix pool type to prevent incomplete type error
+    void setPool(db::ConnectionPool* pool) { pool_ = pool; }
+    db::ConnectionPool* getPool() const { return pool_; }
+
+protected:
     ConnectionConfig config_;
-    ILogger *logger_;
+    ILogger* logger_;
+    db::ConnectionPool* pool_;  // fix type to prevent incomplete type error
 };

@@ -1,17 +1,16 @@
 #pragma once
 
-#include <iostream>
 #include <memory>
 #include <pqxx/pqxx>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include "database.h"
+#include "connection/connection_pool.h"
 
-class PostgreSQL : public IDatabase {
-  public:
-    PostgreSQL(ConnectionConfig cfg, ILogger *logger) : IDatabase(std::move(cfg), std::move(logger))  {}
+class PostgreSQL : public IDatabase, public std::enable_shared_from_this<PostgreSQL> {
+public:
+    PostgreSQL(ConnectionConfig cfg, ILogger* logger);
 
     bool open() override;
     void close() override;
@@ -22,16 +21,13 @@ class PostgreSQL : public IDatabase {
     bool remove(const QueryBuilder& qb) override;
     QueryResult select(const QueryBuilder& qb) override;
 
-    // Non-copyable
     PostgreSQL(const PostgreSQL&) = delete;
     PostgreSQL& operator=(const PostgreSQL&) = delete;
-
-    // Movable
     PostgreSQL(PostgreSQL&&) = default;
     PostgreSQL& operator=(PostgreSQL&&) = default;
 
     ~PostgreSQL();
 
-  private:
+private:
     std::unique_ptr<pqxx::connection> connection_;
 };

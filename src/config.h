@@ -3,27 +3,28 @@
 #include <iostream>
 #include <string>
 
+enum class DatabaseType { PostgreSQL, sqlite };
+
+enum class ConnectionMode {
+    Direct,
+    Pooled
+};
+
 struct ConnectionConfig {
     std::string host;
     int port = 5432;
     std::string dbname;
     std::string user;
     std::string password;
-    int connect_timeout = 10;  // seconds
+    int connect_timeout = 10;
     std::string path = "mydb.db";
-    // SqliteConfig sqlite;
+
+    ConnectionMode mode = ConnectionMode::Direct;
+    size_t poolSize = 5;
 
     std::string toPostgresConnection() const {
-        // postgresql://postgres:qazwsx@172.21.144.1:5432/mydb?connect_timeout=2
-        // return "postgresql://" + user + ":" + password + "@" + host + ":" + std::to_string(port)
-        // +
-        //        "/" + dbname + "?" + "connect_timeout=" + std::to_string(connect_timeout);
         return "host=" + host + " port=" + std::to_string(port) + " dbname=" + dbname +
                " user=" + user + " password=" + password +
                " connect_timeout=" + std::to_string(connect_timeout);
     }
-};
-
-struct SqliteConfig {
-    std::string path = "mydb.db";
 };
