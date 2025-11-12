@@ -7,13 +7,12 @@
 
 int main() {
     ConnectionConfig cfg;
-    cfg.host = "172.21.144.1";
+    cfg.host = "192.168.10.5";
     cfg.port = 5432;
     cfg.dbname = "mydb";  // users(id, username,password, city, email)
     cfg.user = "postgres";
     cfg.password = "qazwsx";
     cfg.connect_timeout = 5;
-
     LogConfig lcfg;
     lcfg.filePath = ".";
     lcfg.maxLogRotate = 100;
@@ -54,6 +53,20 @@ int main() {
     std::unique_ptr<IDatabase> sq =
         DatabaseFactory::createDatabase(DatabaseType::sqlite, cfg, logger);
     std::cout << "result of open sqlite :" << sq->open() << std::endl;
+    QueryBuilder q_;
+    std::string sql_ = q_.table("users u")
+                          .select("u.id")
+                          .select("u.name")
+                          .select("u.email")
+                          .orderBy("u.id DESC")
+                          .limit(10)
+                          .offset(0)
+                          .str();
+
+    std::cout << "query of querybuilder :" << sql_ << "\n";
+   
+
+    sq->select(q_).print();
 
     return 0;
 }

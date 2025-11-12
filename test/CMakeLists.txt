@@ -17,3 +17,20 @@ PRIVATE
     GTest::gtest_main
     pthread
 )
+
+add_executable(querybuilder_test
+    test_querybuilder.cpp
+)
+
+target_include_directories(querybuilder_test PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/querybuilder
+)
+
+target_link_libraries(querybuilder_test
+    PRIVATE
+    ${LIB_ALIAS}
+    GTest::gtest
+    GTest::gtest_main
+    pthread
+)

@@ -39,3 +39,12 @@ ${CMAKE_CURRENT_SOURCE_DIR}/log
 
 # Convenient namespaced alias for downstream targets
 add_library(${LIB_ALIAS} ALIAS ${LIBRARY_NAME})
+
+if(DATBASE_BUILD_TESTS)
+    enable_testing()
+    find_package(GTest REQUIRED)
+    add_executable(test_querybuilder test/test_querybuilder.cpp)
+    target_link_libraries(test_querybuilder PRIVATE GTest::gtest_main isiran::database)
+    include(GoogleTest)
+    gtest_discover_tests(test_querybuilder)
+endif()
