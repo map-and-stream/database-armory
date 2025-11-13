@@ -1,6 +1,3 @@
-[submodule "test/googletest"]
-	path = test/googletest
-	url = https://github.com/google/googletest.git
 [submodule "src/driver/postgres/libpqxx"]
 	path = src/postgres/libpqxx
 	url = https://github.com/jtv/libpqxx.git
