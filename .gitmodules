@@ -1,7 +1,6 @@
 [submodule "src/driver/postgres/libpqxx"]
 	path = src/postgres/libpqxx
 	url = https://github.com/jtv/libpqxx.git
-[submodule "src/log"]
-	path = src/log
-	url = https://github.com/map-and-stream/log.git
-	branch = main
+[submodule "src/log_armory"]
+	path = src/log_armory
+	url = https://github.com/map-and-stream/log-armory.git

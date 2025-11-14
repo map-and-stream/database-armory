@@ -8,7 +8,7 @@
 #include "config.h"
 #include "query_result.h"
 #include "querybuilder/query_builder.h"
-#include "log/src/logger.h"
+#include "log_armory/src/logger.h"
 
 enum class DatabaseType { PostgreSQL, sqlite };
 

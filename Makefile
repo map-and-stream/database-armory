@@ -9,7 +9,7 @@ build:
 	@echo "Starting build process... $(shell nproc) cores"
 	cmake -B $(BUILD_DIR) -DDATABASE_ARMORY_BUILD_TESTS=ON -DDATABASE_ARMORY_BUILD_EXAMPLE=ON
 	cmake --build $(BUILD_DIR) -j$(shell nproc)
-	cp $(BUILD_DIR)/example/camera/camera_example $(OUTPUT_DIR)
+	cp $(BUILD_DIR)/example/database_armory_example $(OUTPUT_DIR)
 
 
 clean:

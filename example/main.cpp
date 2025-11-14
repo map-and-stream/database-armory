@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "factory.h"
-#include "log/src/factory.h"
-#include "log/src/logger.h"
+#include "log_armory/src/factory.h"
+#include "log_armory/src/logger.h"
 #include "querybuilder/query_builder.h"
 
 int main() {
