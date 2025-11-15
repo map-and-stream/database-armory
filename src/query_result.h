@@ -44,7 +44,7 @@ class QueryResult {
         // Print header
         os << "┌";
         for (size_t i = 0; i < widths.size(); ++i) {
-            os << std::string(widths[i] + 2, '─');
+            os << std::string(widths[i] + 2, '-');
             if (i < widths.size() - 1)
                 os << "┬";
         }
@@ -57,7 +57,7 @@ class QueryResult {
 
         os << "├";
         for (size_t i = 0; i < widths.size(); ++i) {
-            os << std::string(widths[i] + 2, '─');
+            os << std::string(widths[i] + 2, '-');
             if (i < widths.size() - 1)
                 os << "┼";
         }
@@ -75,7 +75,7 @@ class QueryResult {
 
         os << "└";
         for (size_t i = 0; i < widths.size(); ++i) {
-            os << std::string(widths[i] + 2, '─');
+            os << std::string(widths[i] + 2, '-');
             if (i < widths.size() - 1)
                 os << "┴";
         }
