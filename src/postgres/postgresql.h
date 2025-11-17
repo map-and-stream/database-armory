@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "database.h"
+#include "querybuilder/query_builder.h"
 
 class PostgreSQL : public IDatabase {
   public:
@@ -20,6 +21,7 @@ class PostgreSQL : public IDatabase {
     bool insert(const QueryBuilder& qb) override;
     bool update(const QueryBuilder& qb) override;
     bool remove(const QueryBuilder& qb) override;
+
     QueryResult select(const QueryBuilder& qb) override;
 
     // Non-copyable

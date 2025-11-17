@@ -11,6 +11,7 @@ int main() {
                           .join("orders o", "u.id", "o.user_id")
                           .where("u.active = true")
                           .orderBy("o.total DESC")
+                          
                           .limit(10)
                           .offset(20)
                           .str();

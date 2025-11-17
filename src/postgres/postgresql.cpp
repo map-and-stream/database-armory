@@ -4,6 +4,7 @@
 #include <pqxx/pqxx>
 #include <stdexcept>
 
+#include "querybuilder/query_builder.h"
 #include "spdlog/fmt/bundled/format.h"
 
 bool PostgreSQL::open() {
