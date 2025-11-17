@@ -20,6 +20,7 @@ int main() {
     ILogger* logger = LoggerFactory::createLogger(LoggerType::Spdlog, lcfg);
     // define QueryBuilder Crud Operation
     // qb_insert
+    // qb_update
     QueryBuilder qb_insert;
     QueryBuilder qb_update;
     QueryBuilder qb_delete;
