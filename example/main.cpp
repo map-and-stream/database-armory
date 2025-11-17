@@ -137,7 +137,7 @@ int main() {
 
     
     qb_delete.remove("users").where("id = 3");
-    std::string delete1_sql = qb_delete.str();
+    std::string delete1_sql = qb_deletcrude.str();
     std::cout << "DELETE query: " << delete1_sql << "\n";
     // Execute DELETE
     bool delete1_result = sq->remove(qb_delete);
