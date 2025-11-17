@@ -19,6 +19,7 @@ int main() {
     lcfg.logLevel = LogLevel::info;
     ILogger* logger = LoggerFactory::createLogger(LoggerType::Spdlog, lcfg);
     // define QueryBuilder Crud Operation
+    //
     QueryBuilder qb_insert;
     QueryBuilder qb_update;
     QueryBuilder qb_delete;
