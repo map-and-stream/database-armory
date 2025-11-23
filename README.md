@@ -10,4 +10,6 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build
 
 git submodule update --remote --checkout src/log
 
+sudo apt install libpq-dev
+
 
